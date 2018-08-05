@@ -1,30 +1,32 @@
-import { PATH, pathOf } from "../src/pathOf"
+import { pathOf } from "../src/pathOf"
 
 describe("pathOf", () => {
   type Test = {
     a: {
-      b: number
+      b: number[]
       c: {
         d: boolean
-        e: number
+        e: symbol
       }
     }
     f: number
   }
 
+  const pathOfTest = pathOf<Test>()
+
   it("returns the full path", () => {
-    const path = pathOf<Test>().a.c.e[PATH]
+    const path = pathOfTest.a.c.e.path()
     expect(path).toBe("a.c.e")
   })
 
   it("returns part of the path", () => {
-    const path = pathOf<Test>().a.c.e[1]
-    expect(path).toBe("c.e")
+    const path = pathOfTest.a.c.e.path(1, 2)
+    expect(path).toBe("c")
   })
 
   it("returns part of the path from the end", () => {
-    const path = pathOf<Test>().a.c.e[-1]
-    expect(path).toBe("e")
+    const path = pathOfTest.a.b.path(-2, -1)
+    expect(path).toBe("a")
   })
 
   it("returns the full path from an object", () => {
@@ -36,7 +38,7 @@ describe("pathOf", () => {
       },
     }
 
-    const path = pathOf<typeof obj>().y.z[0]
-    expect(path).toBe("y.z")
+    const path = pathOf<typeof obj>().y.w.path()
+    expect(path).toBe("y.w")
   })
 })
