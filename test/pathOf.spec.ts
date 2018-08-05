@@ -12,20 +12,18 @@ describe("pathOf", () => {
     f: number
   }
 
-  describe("for a specific type returns", () => {
-    it("the full path", () => {
-      const path = pathOf<Test>().a.c.e[0]
-      expect(path).toBe("a.c.e")
-    })
+  it("return the full path", () => {
+    const path = pathOf<Test>().a.c.e[0]
+    expect(path).toBe("a.c.e")
+  })
 
-    it("path of the path", () => {
-      const path = pathOf<Test>().a.c.e[2]
-      expect(path).toBe("e")
-    })
+  it("part of the path", () => {
+    const path = pathOf<Test>().a.c.e[1]
+    expect(path).toBe("c.e")
+  })
 
-    it("path of the path from the end", () => {
-      const path = pathOf<Test>().a.c.e[-2]
-      expect(path).toBe("c.e")
-    })
+  it("part of the path from the end", () => {
+    const path = pathOf<Test>().a.c.e[-1]
+    expect(path).toBe("e")
   })
 })
