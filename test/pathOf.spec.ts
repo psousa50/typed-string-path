@@ -1,4 +1,4 @@
-import { pathOf } from "../src/pathOf"
+import { PATH, pathOf } from "../src/pathOf"
 
 describe("pathOf", () => {
   type Test = {
@@ -13,7 +13,7 @@ describe("pathOf", () => {
   }
 
   it("returns the full path", () => {
-    const path = pathOf<Test>().a.c.e[0]
+    const path = pathOf<Test>().a.c.e[PATH]
     expect(path).toBe("a.c.e")
   })
 
