@@ -1,0 +1,40 @@
+{
+  "name": "typed-string-path",
+  "version": "0.0.1",
+  "description": "Gets a typed object path string",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "typings": "dist/index.d.js",
+  "scripts": {
+    "build": "rm -rf dist/ && tsc -d -p tsconfig.dist.json",
+    "builddev": "rm -rf dist/ && tsc -d -p tsconfig.json",
+    "lint": "tslint src/**/*.ts test/**/*.ts",
+    "prepare": "npm run build",
+    "pretest": "npm run lint",
+    "jest": "jest --coverage --testPathPattern=.+\\.spec\\.ts",
+    "test": "npm run jest",
+    "test:watch": "npm run jest -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/psousa50/typed-string-path"
+  },
+  "author": "Pedro Sousa <pedronsousa@gmail.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/enzyme": "^3.1.12",
+    "@types/jest": "^23.3.1",
+    "enzyme": "^3.3.0",
+    "jest": "^23.4.2",
+    "ts-jest": "^23.0.1",
+    "ts-node": "^7.0.0",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.1"
+  },
+  "directories": {
+    "test": "test"
+  }
+}
