@@ -1,6 +1,6 @@
 {
   "name": "typed-string-path",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Gets a typed object path string",
   "files": [
     "dist"
