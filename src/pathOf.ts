@@ -1,10 +1,12 @@
+export const PATH = "@@path"
+
 interface Indexed {
   [k: string]: any
 }
 type BasicType = number | string | boolean | symbol | undefined | null | any[]
 
 type PathAccessor = {
-  path: (start?: number, end?: number) => string
+  [PATH]: string
 }
 
 type TypedPathWrapper<T> = {
@@ -13,13 +15,13 @@ type TypedPathWrapper<T> = {
   PathAccessor
 
 export function pathOf<T extends Indexed>(path: string[] = []): TypedPathWrapper<T> {
-  return new Proxy({ path: () => "" } as TypedPathWrapper<T>, {
+  return new Proxy({} as TypedPathWrapper<T>, {
     get(target: TypedPathWrapper<T>, prop: string) {
-      return prop === "path" ? (start?: number, end?: number) => getPath(path, start, end) : pathOf([...path, prop])
+      return prop === PATH ? getPath(path) : pathOf([...path, prop])
     },
   })
 }
 
-function getPath(path: string[], start?: number, end?: number) {
-  return path.slice(start, end).join(".")
+function getPath(path: string[]) {
+  return path.join(".")
 }
