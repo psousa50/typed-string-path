@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/psousa50/typed-string-path"
+    "url": "git+ssh://git@github.com/psousa50/typed-string-path.git"
   },
   "author": "Pedro Sousa <pedronsousa@gmail.com>",
   "license": "MIT",

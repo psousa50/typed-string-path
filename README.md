@@ -19,7 +19,11 @@ const path = "y.z"
 This small library allows to create a string path in a typed fashion:
 
 ```typescript
-const path = pathOf<typeof obj>().y.z.path()
+import { PATH, pathOf } from "typed-string-path"
+
+...
+
+const path = pathOf<typeof obj>().y.z[PATH]
 ```
 
 We have intellisense while typing the path and if the object fields are renamed the path will also be renamed accordingly.
